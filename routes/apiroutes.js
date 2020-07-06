@@ -7,7 +7,7 @@ module.exports = function(app) {
 //url: "/api/notes",
 // method: "GET",
 router.get("/api/notes", function (req, res){
-    repository.getNotes()
+    repository.getnotes()
     .then(function(notes){
         res.json(notes);
     })
@@ -18,7 +18,7 @@ router.get("/api/notes", function (req, res){
 // method: "POST",
 router.post("/api/notes", function (req, res){
     var note = req.body;
-    repository.saveNote(note)
+    repository.savenote(note)
     .then(function(notes){
     res.json(notes);
 });
@@ -27,7 +27,7 @@ router.post("/api/notes", function (req, res){
 // method: "DELETE",
 router.delete("/api/notes:id", function (req, res){
     var id = req.params.id;
-    repository.deleteNote(id)
+    repository.deletenote(id)
     .then(function(notes){
     res.json(notes);
 });

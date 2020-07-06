@@ -11,7 +11,10 @@ app.get("/notes", function(req, res) {
   });
 
 app.get("*", function(req, res) {
+    //investigate
+    console.log("User hit ")
     res.sendFile(path.join(__dirname, "../public/index.html"));
+    
   });
 
 };

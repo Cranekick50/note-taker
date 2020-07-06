@@ -19,10 +19,26 @@ class Repository {
         })
     }
     addnote(note) {
-
+        // return writefileasync("db/db.json", "utf8").then(function(notes){
+        //     let jsonnotes;
+        //     try {
+        //         jsonnotes=[].concat(JSON.parse(notes))
+        //     }catch {
+        //         jsonnotes=[];
+        //     }
+        //     return jsonnnotes
+        // })
     }
     deletenote(id) {
-
+        // return readfileasync("db/db.json", "utf8").then(function(notes){
+        //     let jsonnotes;
+        //     try {
+        //         jsonnotes=[].concat(JSON.parse(notes))
+        //     }catch {
+        //         jsonnotes=[];
+        //     }
+        //     return jsonnnotes
+        // })
     }
 }
 module.exports = new Repository();
