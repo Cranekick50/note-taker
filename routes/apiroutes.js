@@ -1,10 +1,13 @@
 var router = require("express").Router();
 var repository = require ("../db/noterepository")
 
+
+
+module.exports = function(app) {
 //url: "/api/notes",
 // method: "GET",
-router.get("/notes", function (req, res){
-    repository.getnotes()
+router.get("/api/notes", function (req, res){
+    repository.getNotes()
     .then(function(notes){
         res.json(notes);
     })
@@ -13,15 +16,21 @@ router.get("/notes", function (req, res){
 // url: "/api/notes",
 // data: note,
 // method: "POST",
-router.post("/notes", function (req, res){
+router.post("/api/notes", function (req, res){
     var note = req.body;
-    repository.push(note);
-    res.json();
+    repository.saveNote(note)
+    .then(function(notes){
+    res.json(notes);
+});
 })
 // url: "api/notes/" + id,
 // method: "DELETE",
-router.delete("/notes:id", function (req, res){
+router.delete("/api/notes:id", function (req, res){
     var id = req.params.id;
-    repository.deletenote(id);
-    res.json();
+    repository.deleteNote(id)
+    .then(function(notes){
+    res.json(notes);
+});
 })
+
+};
