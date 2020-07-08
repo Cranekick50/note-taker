@@ -3,34 +3,36 @@ var repository = require ("../db/noterepository")
 
 
 
-module.exports = function(app) {
+
 //url: "/api/notes",
 // method: "GET",
-router.get("/api/notes", function (req, res){
+router.get("/notes", function (req, res){
     repository.getnotes()
     .then(function(notes){
         res.json(notes);
     })
+    .catch((err)=> res.status(500).json(err))
     
 })
 // url: "/api/notes",
 // data: note,
 // method: "POST",
-router.post("/api/notes", function (req, res){
+router.post("/notes", function (req, res){
     var note = req.body;
-    repository.savenote(note)
+    repository.addnote(note)
     .then(function(notes){
     res.json(notes);
 });
 })
 // url: "api/notes/" + id,
 // method: "DELETE",
-router.delete("/api/notes:id", function (req, res){
+router.delete("/notes/:id", function (req, res){
     var id = req.params.id;
+    console.log(id)
     repository.deletenote(id)
-    .then(function(notes){
-    res.json(notes);
+    .then(function(){
+    res.json({ok:true})
 });
 })
 
-};
+module.exports = router;
